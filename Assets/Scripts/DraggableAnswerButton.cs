@@ -6,10 +6,16 @@ using UnityEngine.EventSystems;
 public class DraggableAnswerButton : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private bool _isThisTheRightAnswer;
 
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
     private Vector2 _initPos;
+
+    #region PROPERTIES
+    public bool IsThisRightAnswer => _isThisTheRightAnswer;
+    #endregion
+
 
     private void Awake()
     {
@@ -46,7 +52,10 @@ public class DraggableAnswerButton : MonoBehaviour, IPointerDownHandler, IBeginD
         Debug.Log("End Drag");
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
+    }
 
-        //_rectTransform.anchoredPosition = _initPos;
+    public void ReturnToOriginalPos()
+    {
+        _rectTransform.anchoredPosition = _initPos;
     }
 }

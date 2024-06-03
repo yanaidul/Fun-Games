@@ -19,9 +19,25 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
         {
             Debug.Log("OnDrop");
             if (!eventData.pointerDrag.TryGetComponent(out RectTransform droppedObjRectTransform)) return;
+            if (!eventData.pointerDrag.TryGetComponent(out DraggableAnswerButton draggableAnswer)) return;
+
             droppedObjRectTransform.anchoredPosition = _rectTransform.anchoredPosition;
-            
+            StartCoroutine(DelayBeforeDisplayResult(draggableAnswer));
+
         }
     }
 
+    IEnumerator DelayBeforeDisplayResult(DraggableAnswerButton draggableAnswer)
+    {
+        yield return new WaitForSeconds(0.5F);
+        if(draggableAnswer.IsThisRightAnswer)
+        {
+            QuizGameManager.GetInstance().OnDisplayCorrectPanel();
+        }
+        else
+        {
+            QuizGameManager.GetInstance().OnDisplayIncorrectPanel();
+        }
+        draggableAnswer.ReturnToOriginalPos();
+    }
 }
