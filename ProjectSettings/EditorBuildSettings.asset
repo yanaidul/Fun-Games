@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Old Assets/Scenes/Advance.unity
     guid: 788c9782c3b97c648b8e52447a76afe8
   - enabled: 1
-    path: Assets/Scene/Main.unity
+    path: Assets/Scene/main.unity
     guid: 22f42ede9825d614ba33a1a5b811c77e
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 3b81bc7788e4b0c44b1749d07e7d0f12, type: 2}
