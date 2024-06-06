@@ -6,27 +6,30 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
-    [SerializeField] private float _countdownTime = 180;
     [SerializeField] private QuizGameManagerAdvanced _gameManagerAdvanced;
 
     public bool stopTimer = false;
+    private float _totalDurations;
+    private float _countdownTime = 180;
 
-    void Start()
+    public void StartTimer(float totalDurations)
     {
+        _totalDurations = totalDurations;
+        _countdownTime = _totalDurations;
         stopTimer = false;
         UpdateTimerText();
     }
 
     private void OnEnable()
     {
-        _countdownTime = 180;
+        _countdownTime = _totalDurations;
         stopTimer = false;
         UpdateTimerText();
     }
 
     public void OnResetTimer()
     {
-        _countdownTime = 180;
+        _countdownTime = _totalDurations;
         stopTimer = false;
         UpdateTimerText();
     }

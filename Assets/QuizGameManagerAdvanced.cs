@@ -12,11 +12,13 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
     [SerializeField] private GameObject _incorrectPanel;
     [SerializeField] private Health _health;
     [SerializeField] private Timer _timer;
+    [SerializeField] private float _totalDuration;
 
     private void OnEnable()
     {
         _currentSoal = 0;
         DeactiveAllSoal();
+        _timer.StartTimer(_totalDuration);
         _listSoal[_currentSoal].gameObject.SetActive(true);
     }
 
