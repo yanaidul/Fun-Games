@@ -8,11 +8,13 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
     [SerializeField] private List<Soal> _listSoal = new List<Soal>();
     [SerializeField] private GameObject _permainanSelesaiPanel;
     [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private GameObject _nextLevelButton;
     [SerializeField] private GameObject _correctPanel;
     [SerializeField] private GameObject _incorrectPanel;
     [SerializeField] private Health _health;
     [SerializeField] private Timer _timer;
     [SerializeField] private float _totalDuration;
+    [SerializeField] private bool _isThisFinalLevel;
 
     private void OnEnable()
     {
@@ -65,6 +67,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         _currentSoal++;
         if (_currentSoal == 5)
         {
+            if(_isThisFinalLevel) _nextLevelButton.gameObject.SetActive(false);
             _permainanSelesaiPanel.SetActive(true);
         }
         else
