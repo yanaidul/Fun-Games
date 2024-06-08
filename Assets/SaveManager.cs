@@ -7,4 +7,9 @@ public class SaveManager : Singleton<SaveManager>
     [SerializeField] private int _currentUnlockedLevel;
 
     public int CurrentUnlockedLevel => _currentUnlockedLevel;
+
+    public void IncreaseLevel()
+    {
+        _currentUnlockedLevel++;
+    }
 }

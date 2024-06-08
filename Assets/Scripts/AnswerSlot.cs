@@ -32,11 +32,11 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
         yield return new WaitForSeconds(0.5F);
         if(draggableAnswer.IsThisRightAnswer)
         {
-            QuizGameManager.GetInstance().OnDisplayCorrectPanel();
+            transform.parent.transform.parent.GetComponent<QuizGameManagerBasic>().OnDisplayCorrectPanel();
         }
         else
         {
-            QuizGameManager.GetInstance().OnDisplayIncorrectPanel();
+            transform.parent.transform.parent.GetComponent<QuizGameManagerBasic>().OnDisplayIncorrectPanel();
         }
         draggableAnswer.ReturnToOriginalPos();
     }

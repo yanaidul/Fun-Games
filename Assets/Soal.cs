@@ -25,6 +25,7 @@ public class Soal : MonoBehaviour
 
     public void OnSubmitJawabanSalah()
     {
+        SFX.GetInstance().OnPlayIncorrect();
         _health.OnDecreaseHealth();
         if (_health._totalHealth == 0) _quizGameManagerAdvanced.OnDisplayGameOver();
     }
@@ -32,8 +33,8 @@ public class Soal : MonoBehaviour
     public void OnSubmitJawabanBenar()
     {
         _currentGambar += 1;
-
-        if(_currentGambar >= 3)
+        SFX.GetInstance().OnPlayCorrect();
+        if (_currentGambar >= 3)
         {
             _quizGameManagerAdvanced.OnNextSoal();
         }

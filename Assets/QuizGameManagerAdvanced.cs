@@ -45,12 +45,14 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
 
     public void OnDisplayCorrectPanel()
     {
+        SFX.GetInstance().OnPlayCorrect();
         _correctPanel.SetActive(true);
         StartCoroutine(TurnPanelInactiveDelay());
     }
 
     public void OnDisplayIncorrectPanel()
     {
+        SFX.GetInstance().OnPlayIncorrect();
         _incorrectPanel.SetActive(true);
         StartCoroutine(TurnPanelInactiveDelay());
     }
@@ -68,6 +70,8 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         if (_currentSoal == 5)
         {
             if(_isThisFinalLevel) _nextLevelButton.gameObject.SetActive(false);
+            else SaveManager.GetInstance().IncreaseLevel();
+
             _permainanSelesaiPanel.SetActive(true);
         }
         else

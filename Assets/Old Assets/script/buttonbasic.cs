@@ -16,7 +16,7 @@ public class buttonbasic : MonoBehaviour
     {
         
     }
-    public void Animalmenu(){
-         SceneManager.LoadScene("animalgame");
-    }
+    //public void Animalmenu(){
+    //     SceneManager.LoadScene("animalgame");
+    //}
 }

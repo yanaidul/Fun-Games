@@ -10,6 +10,11 @@ public class SubmitJawabanButton : MonoBehaviour
     [SerializeField] private string _jawaban;
     [SerializeField] private Soal _soal;
 
+    private void OnEnable()
+    {
+        _inputFieldJawaban.text = string.Empty;
+    }
+
     void Start()
     {
         _inputFieldJawaban.onValidateInput += delegate (string s, int i, char c) { return char.ToUpper(c); };

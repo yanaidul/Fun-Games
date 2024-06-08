@@ -13,7 +13,7 @@ public class AdvencedLevelManager : MonoBehaviour
 
     public int LatestAccessedStage => _latestAccessedStage;
 
-    private void Start()
+    private void OnEnable()
     {
         for (int i = 0; i < _listOfAdvancedLevelsButtons.Count; i++)
         {
@@ -27,17 +27,29 @@ public class AdvencedLevelManager : MonoBehaviour
     {
         _canvasAdvancedLevelList.SetActive(false);
         _latestAccessedStage = levelIndex + 1;
-        foreach (GameObject level in _listOfAdvancedLevels)
-        {
-            level.gameObject.SetActive(false);
-        }
+        TurnOffAllStage();
         _listOfAdvancedLevels[levelIndex].gameObject.SetActive(true);
+    }
+
+    public void OnResetStage()
+    {
+        TurnOffAllStage();
+        _listOfAdvancedLevels[_latestAccessedStage - 1].gameObject.SetActive(true);
     }
 
     public void OnNextLevel()
     {
         _canvasGameSelesai.SetActive(false);
         _latestAccessedStage += 1;
+        if (SaveManager.GetInstance().CurrentUnlockedLevel <= _latestAccessedStage) SaveManager.GetInstance().IncreaseLevel();
         OnSelectStage(_latestAccessedStage - 1);
+    }
+
+    public void TurnOffAllStage()
+    {
+        foreach (GameObject level in _listOfAdvancedLevels)
+        {
+            level.gameObject.SetActive(false);
+        }
     }
 }

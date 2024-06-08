@@ -33,7 +33,7 @@ public class button : MonoBehaviour
         // Reset game data (if needed)
 
         // Load initial scene
-        SceneManager.LoadScene("gameplay");
+        //SceneManager.LoadScene("gameplay");
 
         // Initialize player state
        
