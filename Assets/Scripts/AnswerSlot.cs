@@ -17,13 +17,13 @@ public class AnswerSlot : MonoBehaviour, IDropHandler
     {
         if(eventData.pointerDrag != null)
         {
+            //Kasih penjelas pointer pada saat ondrop
             Debug.Log("OnDrop");
             if (!eventData.pointerDrag.TryGetComponent(out RectTransform droppedObjRectTransform)) return;
             if (!eventData.pointerDrag.TryGetComponent(out DraggableAnswerButton draggableAnswer)) return;
 
             droppedObjRectTransform.anchoredPosition = _rectTransform.anchoredPosition;
             StartCoroutine(DelayBeforeDisplayResult(draggableAnswer));
-
         }
     }
 

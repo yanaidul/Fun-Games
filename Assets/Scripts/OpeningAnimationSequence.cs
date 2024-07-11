@@ -29,6 +29,7 @@ public class OpeningAnimationSequence : MonoBehaviour
     }
 
     [Button]
+    //Method untuk memulai sequence animasi di home menu (header,subheader, dan button)
     public void OnStartAnimation()
     {
         Sequence startAnimationSequence = DOTween.Sequence();
