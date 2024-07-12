@@ -12,6 +12,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
     [SerializeField] private GameObject _correctPanel;
     [SerializeField] private GameObject _incorrectPanel;
 
+    //Function yang dipanggil ketika game object aktif 
     private void OnEnable()
     {
         _currentLevel = 0;
@@ -23,6 +24,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         OnDisplayRandomLevel();
     }
 
+    //Function yang dipanggil untuk menampilkan correct panel
     public void OnDisplayCorrectPanel()
     {
         SFX.GetInstance().OnPlayCorrect();
@@ -30,6 +32,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         StartCoroutine(TurnPanelInactiveDelay(true));
     }
 
+    //Function yang dipanggil untuk menampilkan incorrect panel
     public void OnDisplayIncorrectPanel()
     {
         SFX.GetInstance().OnPlayIncorrect();
@@ -37,6 +40,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         StartCoroutine(TurnPanelInactiveDelay(false));
     }
 
+    //Function yang dipanggil untuk lanjut ke level selanjutnya
     public void OnNextLevel()
     {
         _currentLevel++;
@@ -53,6 +57,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         }
     }
 
+    //Function yang dipanggil untuk menampilkan level secara random
     private void OnDisplayRandomLevel()
     {
         _random = Random.Range(0, _listLevel.Count);
@@ -65,6 +70,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         }
     }
 
+    //Function yang dipanggil untuk menonaktifkan panel correct/incorrect setelah beberapa detik
     IEnumerator TurnPanelInactiveDelay(bool isCorrect)
     {
         yield return new WaitForSeconds(1f);
@@ -73,6 +79,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         if (isCorrect) OnNextLevel();
     }
 
+    //Function yang dipanggil untuk menonaktifan seluruh game object level terlebih dahulu sebelum mengaktifkan level lain agar tidak overlap
     public void DeactiveAllLevel()
     {
         foreach (LevelBasic level in _listLevel)
@@ -81,6 +88,7 @@ public class QuizGameManagerBasic : Singleton<QuizGameManagerBasic>
         }
     }
 
+    //Function yang dipanggil untuk mengganti level secara random setelah 1 detik
     IEnumerator OnDelayChangeLevel()
     {
         yield return new WaitForSeconds(1f);

@@ -8,6 +8,7 @@ public class LevelBasic : MonoBehaviour
 
     public bool IsDone => _isDone;
 
+    //Function yang di pnaggil untuk ngaish penanda bahwa level ini sudah selesai
     public void SetIsDoneValue(bool value)
     {
         _isDone = value;

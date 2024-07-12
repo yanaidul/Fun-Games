@@ -16,6 +16,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
     [SerializeField] private float _totalDuration;
     [SerializeField] private bool _isThisFinalLevel;
 
+    //Function yang dipanggil pada saat gameobject dinyalakan
     private void OnEnable()
     {
         _currentSoal = 0;
@@ -24,6 +25,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         _listSoal[_currentSoal].gameObject.SetActive(true);
     }
 
+    //Function yang dipanggil untuk reset soal dari awal
     public void OnResetSoal()
     {
         _currentSoal = 0;
@@ -37,12 +39,14 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         _timer.OnResetTimer();
     }
 
+    //Function yang dipanggil untuk menampilkan tampilan game over
     public void OnDisplayGameOver()
     {
         _timer.stopTimer = true;
         _gameOverPanel.SetActive(true);
     }
 
+    //Function yang dipanggil untuk menampilkan tampilan correct panel
     public void OnDisplayCorrectPanel()
     {
         SFX.GetInstance().OnPlayCorrect();
@@ -50,6 +54,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         StartCoroutine(TurnPanelInactiveDelay());
     }
 
+    //Function yang dipanggil untuk menampilkan tampilan incorrect
     public void OnDisplayIncorrectPanel()
     {
         SFX.GetInstance().OnPlayIncorrect();
@@ -57,6 +62,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         StartCoroutine(TurnPanelInactiveDelay());
     }
 
+    //Function yang dipanggil untuk menonaktifkan correctpanel/incorrect panel setelah 1 detik
     IEnumerator TurnPanelInactiveDelay()
     {
         yield return new WaitForSeconds(1f);
@@ -64,6 +70,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         _incorrectPanel.SetActive(false);
     }
 
+    //Function yang dipanggil untuk memanggil soal selanjutnya, dan bila sudah soal terakhir, maka memanggil permainan selesai panel
     public void OnNextSoal()
     {
         _currentSoal++;
@@ -81,6 +88,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         }
     }
 
+    //Function yang dipanggil untuk menonaktifkan semua soal gameobject sebelum mengaktifkan soal lain agar tidak overlap
     public void DeactiveAllSoal()
     {
         foreach (Soal soal in _listSoal)
@@ -89,6 +97,7 @@ public class QuizGameManagerAdvanced : Singleton<QuizGameManagerAdvanced>
         }
     }
 
+    //Function yang dipanggil untuk mengganti soal setelah delay 1 detik
     IEnumerator OnDelayChangeSoal()
     {
         yield return new WaitForSeconds(1f);

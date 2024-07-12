@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     private float _totalDurations;
     private float _countdownTime = 180;
 
+    //Function yang dipanggil untuk memulai timer
     public void StartTimer(float totalDurations)
     {
         _totalDurations = totalDurations;
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
         UpdateTimerText();
     }
 
+    //Function yang dipanggil pada saat gameobject dinyalakan
     private void OnEnable()
     {
         _countdownTime = _totalDurations;
@@ -27,6 +29,7 @@ public class Timer : MonoBehaviour
         UpdateTimerText();
     }
 
+    //Function yang dipanggil untuk mereset timer
     public void OnResetTimer()
     {
         _countdownTime = _totalDurations;
@@ -34,6 +37,7 @@ public class Timer : MonoBehaviour
         UpdateTimerText();
     }
 
+    //Function yang setiap saat untuk melakukan hitungan mundur untuk timer
     void Update()
     {
         if (stopTimer) return;
@@ -51,6 +55,7 @@ public class Timer : MonoBehaviour
         }
     }
 
+    //Function yang dipanggil untuk mengupdate text timer
     void UpdateTimerText()
     {
         int minutes = Mathf.FloorToInt(_countdownTime / 60);

@@ -26,6 +26,7 @@ public class DraggableAnswerButton : MonoBehaviour, IPointerDownHandler, IBeginD
         _rectTransform = rectTransform;
 
         _initPos = _rectTransform.anchoredPosition;
+
     }
 
     public void OnPointerDown(PointerEventData eventData)

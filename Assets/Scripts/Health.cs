@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public int _totalHealth = 5;
     public int _howManyHealthInThisLevel = 5;
 
+    //Function yang dipanggil pada saat gameobject dinyalakan
     private void OnEnable()
     {
         _totalHealth = _howManyHealthInThisLevel;
@@ -23,6 +24,7 @@ public class Health : MonoBehaviour
 
     }
 
+    //Function yang dipanggil untuk ngereset health di advanced level (ketika exit lalu masuk lagi atau ketika klik restart level)
     public void OnResetHealth()
     {
         _totalHealth = _howManyHealthInThisLevel;
@@ -36,6 +38,7 @@ public class Health : MonoBehaviour
         }
     }
 
+    //Function yang dipanggil ketika jawaban salah dan mengurangi jumlah health
     public void OnDecreaseHealth()
     {
         _totalHealth -= 1;

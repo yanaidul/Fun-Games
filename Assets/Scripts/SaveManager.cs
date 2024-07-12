@@ -8,6 +8,7 @@ public class SaveManager : Singleton<SaveManager>
 
     public int CurrentUnlockedLevel => _currentUnlockedLevel;
 
+    //Function yang dipanggil untuk menaikkan current unlocked level di advanced level list
     public void IncreaseLevel()
     {
         _currentUnlockedLevel++;
